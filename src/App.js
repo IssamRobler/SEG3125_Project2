@@ -1,5 +1,5 @@
 
-import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
+import {HashRouter as Router,Routes,Route} from 'react-router-dom'
 import { Nav } from './components/nav/Nav';
 import {Home} from './pages/home/Home'
 import {Breakfast} from './pages/breakfast/Breakfast'
