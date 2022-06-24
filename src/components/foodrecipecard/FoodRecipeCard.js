@@ -7,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import img from '../../assets/img/foodpreview.png'
+import {Link} from 'react-router-dom'
 
 export default function FoodCard(props) {
   return (
@@ -27,7 +28,11 @@ export default function FoodCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">View Recipe</Button>
+      <Link to="/viewRecipe">
+          <Button size="small">
+                    View Recipe
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );
