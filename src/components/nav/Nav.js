@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
-import { PageTitle, Text } from './typography/Typography'
+import { PageTitle, Text } from '../typography/Typography'
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 export function Nav() {
