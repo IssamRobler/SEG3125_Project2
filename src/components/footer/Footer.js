@@ -59,4 +59,7 @@ const FooterContainer = styled.div`
     a {
         margin:auto ;
     }
+    position:relative ;
+    width:100%;
+    box-sizing:border-box ;
 `
