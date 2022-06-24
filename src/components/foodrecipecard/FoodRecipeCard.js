@@ -1,0 +1,34 @@
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from "@mui/material/CardHeader"
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import img from '../../assets/img/foodpreview.png'
+
+export default function FoodCard(props) {
+  return (
+    <Card sx={{ maxWidth: 400,height:500, display:'flex', justifyContent:'space-between', flexDirection:'column' }}>
+     <CardHeader 
+        title={props.recipe_title}
+        subheader={props.recipe_upload_date}
+     /> 
+      <CardMedia
+        component="img"
+        height="50%"
+        src={img}
+        alt="Food"
+      />
+      <CardContent>
+        <Typography variant="body2" color="text.secondary">
+          dahodhadhoadhoahdoahdoahdohaodhoasd
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">View Recipe</Button>
+      </CardActions>
+    </Card>
+  );
+}

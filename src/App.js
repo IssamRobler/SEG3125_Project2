@@ -8,6 +8,7 @@ import {Dinner} from './pages/dinner/Dinner'
 import {Snacks} from './pages/snacks/Snacks'
 import { ShareRecipe } from './pages/sharerecipe/ShareRecipe';
 import  {Login} from './pages/login/Login'
+import { Footer } from './components/footer/Footer';
 function App() {
   return (
     <Router>
@@ -33,6 +34,7 @@ function App() {
       <Routes>
           <Route exact path="/login" element={<Login/>}></Route>
       </Routes>
+      <Footer/>
     </Router>
   );
 }
