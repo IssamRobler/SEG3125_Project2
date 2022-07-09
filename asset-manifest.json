@@ -1,16 +1,28 @@
 {
   "files": {
     "main.css": "/SEG3125_Project2/static/css/main.e6c13ad2.css",
-    "main.js": "/SEG3125_Project2/static/js/main.5d067979.js",
+    "main.js": "/SEG3125_Project2/static/js/main.f10b5a3a.js",
     "static/js/787.051f2bfd.chunk.js": "/SEG3125_Project2/static/js/787.051f2bfd.chunk.js",
     "static/media/foodpreview.png": "/SEG3125_Project2/static/media/foodpreview.fdb429405239b3c77289.png",
+    "static/media/hotdog.jpg": "/SEG3125_Project2/static/media/hotdog.cdd5c96cd256cf293abb.jpg",
+    "static/media/burger.jpg": "/SEG3125_Project2/static/media/burger.fc0acdc104999c6b0160.jpg",
+    "static/media/lasagna.jpg": "/SEG3125_Project2/static/media/lasagna.e32180e09a49eea7b036.jpg",
+    "static/media/omelette.jpg": "/SEG3125_Project2/static/media/omelette.8ee78a0189d4cb9e6b49.jpg",
+    "static/media/korean_fried_chicken.jpg": "/SEG3125_Project2/static/media/korean_fried_chicken.b7347445c3bc465e0885.jpg",
+    "static/media/pinwheel_pizza.jpg": "/SEG3125_Project2/static/media/pinwheel_pizza.a1597319b0adcafd04e1.jpg",
+    "static/media/granola.jpg": "/SEG3125_Project2/static/media/granola.be6bef3d4def14f49aa1.jpg",
+    "static/media/pancake.jpg": "/SEG3125_Project2/static/media/pancake.eddc44c64ee21a9de08a.jpg",
+    "static/media/pizza.jpg": "/SEG3125_Project2/static/media/pizza.ce6f2ccdbe41aba52e2c.jpg",
+    "static/media/fruit_snack.jpg": "/SEG3125_Project2/static/media/fruit_snack.9e8aa7a880f45d7efaaf.jpg",
+    "static/media/frenchtoast.jpg": "/SEG3125_Project2/static/media/frenchtoast.0414e85f9c7c87c42bd3.jpg",
+    "static/media/spagetti_bolognese.jpg": "/SEG3125_Project2/static/media/spagetti_bolognese.490184c6b279bf32daf9.jpg",
     "index.html": "/SEG3125_Project2/index.html",
     "main.e6c13ad2.css.map": "/SEG3125_Project2/static/css/main.e6c13ad2.css.map",
-    "main.5d067979.js.map": "/SEG3125_Project2/static/js/main.5d067979.js.map",
+    "main.f10b5a3a.js.map": "/SEG3125_Project2/static/js/main.f10b5a3a.js.map",
     "787.051f2bfd.chunk.js.map": "/SEG3125_Project2/static/js/787.051f2bfd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.5d067979.js"
+    "static/js/main.f10b5a3a.js"
   ]
 }
