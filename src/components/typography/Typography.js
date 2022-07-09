@@ -13,7 +13,6 @@ export function PageTitle(props) {
 }
 
 const StyledText = styled.div`
-    line-height:35px ;
     font-family:Arial, sans-serif ;
     color:white ;
 `
