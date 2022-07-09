@@ -86,7 +86,6 @@ export function MainInfo({ mainStepHandler, mainInfoData }) {
           value={mainInfoData.prep_time_number}
         />
         <TextField
-          id="outlined-select-currency"
           select
           label="unit"
           style={{ background: "white" }}
