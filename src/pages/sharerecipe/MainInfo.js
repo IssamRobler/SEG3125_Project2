@@ -1,7 +1,6 @@
-import { TextField, Typography, Button } from "@mui/material";
-
+import { Paper, TextField, Typography, Button } from "@mui/material";
 import styled from "styled-components";
-
+import { Text } from "../../components/typography/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
@@ -84,7 +83,6 @@ export function MainInfo({ mainStepHandler, mainInfoData }) {
           variant="filled"
           type="number"
           onChange={mainStepHandler("prep_time_number")}
-          InputProps={{ inputProps: { min: 0 } }}
           value={mainInfoData.prep_time_number}
         />
         <TextField
@@ -110,10 +108,10 @@ export function MainInfo({ mainStepHandler, mainInfoData }) {
           variant="filled"
           type="number"
           onChange={mainStepHandler("cook_time_number")}
-          InputProps={{ inputProps: { min: 0 } }}
           value={mainInfoData.cook_time_number}
         />
         <TextField
+          id="outlined-select-currency"
           select
           label={t("unit")}
           style={{ background: "white" }}
@@ -135,7 +133,7 @@ export function MainInfo({ mainStepHandler, mainInfoData }) {
           style={{ background: "white" }}
           variant="filled"
           type="number"
-          InputProps={{ inputProps: { min: 0 } }}
+          InputProps={{ inputProps: { min: 0, max: 10 } }}
           onChange={mainStepHandler("num_servings")}
           value={mainInfoData.num_servings}
         />
@@ -164,7 +162,14 @@ const CookingInfo = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
-
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+`;
+const TitleContainer = styled.div`
+  width: 100%;
+`;
 const FoodImage = styled.div`
   width: 100%;
   display: flex;
@@ -177,5 +182,29 @@ const UserInputs = styled.div`
   flex-direction: column;
   > div {
     margin: 10px 0;
+  }
+`;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  min-height: 50vh;
+  padding: 10%;
+  width: 75%;
+  > div {
+    margin: 20px 0;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+  a:visited {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  a:active {
+    text-decoration: none;
   }
 `;

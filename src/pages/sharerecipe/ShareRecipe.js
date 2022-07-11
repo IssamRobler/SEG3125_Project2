@@ -12,16 +12,6 @@ import { useTranslation } from "react-i18next";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 
-const timeUnits = [
-  {
-    value: "hours",
-    label: "hrs",
-  },
-  {
-    value: "minutes",
-    label: "min",
-  },
-];
 const paperStyle = {
   width: "50vh",
   minHeight: "50vh",
@@ -312,7 +302,6 @@ const Form = styled.form`
 
   min-height: 50vh;
   padding: 10%;
-
   > div {
     margin: 20px 0;
   }
