@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SEG3125_Project2/static/css/main.e6c13ad2.css",
-    "main.js": "/SEG3125_Project2/static/js/main.f10b5a3a.js",
+    "main.js": "/SEG3125_Project2/static/js/main.630148fe.js",
     "static/js/787.051f2bfd.chunk.js": "/SEG3125_Project2/static/js/787.051f2bfd.chunk.js",
     "static/media/foodpreview.png": "/SEG3125_Project2/static/media/foodpreview.fdb429405239b3c77289.png",
     "static/media/hotdog.jpg": "/SEG3125_Project2/static/media/hotdog.cdd5c96cd256cf293abb.jpg",
@@ -17,12 +17,13 @@
     "static/media/frenchtoast.jpg": "/SEG3125_Project2/static/media/frenchtoast.0414e85f9c7c87c42bd3.jpg",
     "static/media/spagetti_bolognese.jpg": "/SEG3125_Project2/static/media/spagetti_bolognese.490184c6b279bf32daf9.jpg",
     "index.html": "/SEG3125_Project2/index.html",
+    "static/media/getFetch.cjs": "/SEG3125_Project2/static/media/getFetch.c780682470504fffbd04.cjs",
     "main.e6c13ad2.css.map": "/SEG3125_Project2/static/css/main.e6c13ad2.css.map",
-    "main.f10b5a3a.js.map": "/SEG3125_Project2/static/js/main.f10b5a3a.js.map",
+    "main.630148fe.js.map": "/SEG3125_Project2/static/js/main.630148fe.js.map",
     "787.051f2bfd.chunk.js.map": "/SEG3125_Project2/static/js/787.051f2bfd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.f10b5a3a.js"
+    "static/js/main.630148fe.js"
   ]
 }
