@@ -12,52 +12,55 @@ import { ViewRecipe } from "./pages/viewrecipe/ViewRecipe";
 import { CreateAccount } from "./pages/createaccount/CreateAccount";
 import styled from "styled-components";
 import { SucessShareRecipe } from "./pages/successsharerecipe/Sucess";
+import { Suspense } from "react";
 function App() {
   return (
-    <Router>
-      <Nav />
-      <Content>
-        <Routes>
-          <Route exact path="/" element={<Home />}></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/breakfast" element={<Breakfast />}></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/lunch" element={<Lunch />}></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/dinner" element={<Dinner />}></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/snacks" element={<Snacks />}></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/sharerecipe" element={<ShareRecipe />}></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/login" element={<Login />}></Route>
-        </Routes>
-        <Routes>
-          <Route exact path="/viewRecipe" element={<ViewRecipe />}></Route>
-        </Routes>
-        <Routes>
-          <Route
-            exact
-            path="/createAccount"
-            element={<CreateAccount />}
-          ></Route>
-        </Routes>
-        <Routes>
-          <Route
-            exact
-            path="/sucessShareRecipe"
-            element={<SucessShareRecipe />}
-          ></Route>
-        </Routes>
-      </Content>
-      <Footer />
-    </Router>
+    <Suspense fallback={null}>
+      <Router>
+        <Nav />
+        <Content>
+          <Routes>
+            <Route exact path="/" element={<Home />}></Route>
+          </Routes>
+          <Routes>
+            <Route exact path="/breakfast" element={<Breakfast />}></Route>
+          </Routes>
+          <Routes>
+            <Route exact path="/lunch" element={<Lunch />}></Route>
+          </Routes>
+          <Routes>
+            <Route exact path="/dinner" element={<Dinner />}></Route>
+          </Routes>
+          <Routes>
+            <Route exact path="/snacks" element={<Snacks />}></Route>
+          </Routes>
+          <Routes>
+            <Route exact path="/sharerecipe" element={<ShareRecipe />}></Route>
+          </Routes>
+          <Routes>
+            <Route exact path="/login" element={<Login />}></Route>
+          </Routes>
+          <Routes>
+            <Route exact path="/viewRecipe" element={<ViewRecipe />}></Route>
+          </Routes>
+          <Routes>
+            <Route
+              exact
+              path="/createAccount"
+              element={<CreateAccount />}
+            ></Route>
+          </Routes>
+          <Routes>
+            <Route
+              exact
+              path="/sucessShareRecipe"
+              element={<SucessShareRecipe />}
+            ></Route>
+          </Routes>
+        </Content>
+        <Footer />
+      </Router>
+    </Suspense>
   );
 }
 

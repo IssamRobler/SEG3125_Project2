@@ -5,44 +5,46 @@ import { Link } from "react-router-dom";
 import { PageTitle, Text } from "../../components/typography/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import * as React from "react";
-const timeUnits = [
-  {
-    value: "hours",
-    label: "hrs",
-  },
-  {
-    value: "minutes",
-    label: "min",
-  },
-];
-
-const foodType = [
-  {
-    value: "Breakfast",
-    label: "Breakfast",
-  },
-  {
-    value: "Lunch",
-    label: "Lunch",
-  },
-  {
-    value: "Dinner",
-    label: "Dinner",
-  },
-  {
-    value: "Snack",
-    label: "Snack",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export function MainInfo({ mainStepHandler, mainInfoData }) {
+  const { t } = useTranslation(["shareRecipeForm", "common"]);
+  const timeUnits = [
+    {
+      value: "hours",
+      label: "hrs",
+    },
+    {
+      value: "minutes",
+      label: "min",
+    },
+  ];
+
+  const foodType = [
+    {
+      value: "Breakfast",
+      label: t("common:breakfast"),
+    },
+    {
+      value: "Lunch",
+      label: t("common:lunch"),
+    },
+    {
+      value: "Dinner",
+      label: t("common:dinner"),
+    },
+    {
+      value: "Snack",
+      label: t("common:snack"),
+    },
+  ];
   return (
     <UserInputs>
       <div>
         <TextField
           required
           id="outlined-required"
-          label="Recipe name"
+          label={t("recipeName")}
           style={{ background: "white" }}
           fullWidth
           variant="filled"
@@ -53,7 +55,7 @@ export function MainInfo({ mainStepHandler, mainInfoData }) {
       <div>
         <TextField
           required
-          label="Recipe summary"
+          label={t("recipeSummary")}
           style={{ background: "white" }}
           fullWidth
           variant="filled"
@@ -65,20 +67,20 @@ export function MainInfo({ mainStepHandler, mainInfoData }) {
       </div>
       <FoodImage>
         <Button variant="contained">
-          Upload image
+          {t("uploadImg")}
           <input type="file" hidden />
         </Button>
         <Typography
           variant="subtitle2"
           style={{ marginLeft: "10px", lineHeight: "38px" }}
         >
-          <Text>file name</Text>
+          <Text>{t("fileName")}</Text>
         </Typography>
       </FoodImage>
       <CookingInfo>
         <TextField
           required
-          label="Prep time"
+          label={t("prepTime")}
           style={{ background: "white" }}
           variant="filled"
           type="number"
@@ -87,7 +89,7 @@ export function MainInfo({ mainStepHandler, mainInfoData }) {
         />
         <TextField
           select
-          label="unit"
+          label={t("unit")}
           style={{ background: "white" }}
           variant="filled"
           onChange={mainStepHandler("prep_time_unit")}
@@ -103,7 +105,7 @@ export function MainInfo({ mainStepHandler, mainInfoData }) {
       <CookingInfo>
         <TextField
           required
-          label="Cook time"
+          label={t("cookTime")}
           style={{ background: "white" }}
           variant="filled"
           type="number"
@@ -113,7 +115,7 @@ export function MainInfo({ mainStepHandler, mainInfoData }) {
         <TextField
           id="outlined-select-currency"
           select
-          label="unit"
+          label={t("unit")}
           style={{ background: "white" }}
           variant="filled"
           onChange={mainStepHandler("cook_time_unit")}
@@ -129,7 +131,7 @@ export function MainInfo({ mainStepHandler, mainInfoData }) {
       <CookingInfo>
         <TextField
           required
-          label="Servings"
+          label={t("servings")}
           style={{ background: "white" }}
           variant="filled"
           type="number"
@@ -140,7 +142,7 @@ export function MainInfo({ mainStepHandler, mainInfoData }) {
         <TextField
           id="outlined-select-currency"
           select
-          label="Type"
+          label={t("type")}
           style={{ background: "white" }}
           variant="filled"
           onChange={mainStepHandler("food_type")}

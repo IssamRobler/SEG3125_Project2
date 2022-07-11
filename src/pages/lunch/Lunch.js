@@ -5,9 +5,10 @@ import { Typography, Button, TextField } from "@mui/material";
 import { Text } from "../../components/typography/Typography";
 import * as React from "react";
 import MenuItem from "@mui/material/MenuItem";
-import pizza_img from "../../assets/img/lunch/pizza.jpg";
-import hot_dog_img from "../../assets/img/lunch/hotdog.jpg";
-import burger_img from "../../assets/img/lunch/burger.jpg";
+import pizza_img from "../../img/lunch/pizza.jpg";
+import hot_dog_img from "../../img/lunch/hotdog.jpg";
+import burger_img from "../../img/lunch/burger.jpg";
+import { useTranslation } from "react-i18next";
 
 const DEFAULT_LUNCH = [
   {
@@ -30,19 +31,21 @@ const DEFAULT_LUNCH = [
   },
 ];
 
-const sortByOptions = [
-  {
-    value: "newest",
-    label: "Newest",
-  },
-  {
-    value: "oldest",
-    label: "Oldest",
-  },
-];
 export function Lunch() {
   const [sortOrder, setSortOrder] = React.useState("newest");
   const [lunches, setLunches] = React.useState(DEFAULT_LUNCH);
+  const { t } = useTranslation(["common"]);
+
+  const sortByOptions = [
+    {
+      value: "newest",
+      label: t("sortNew"),
+    },
+    {
+      value: "oldest",
+      label: t("sortOld"),
+    },
+  ];
 
   React.useEffect(() => {
     const copy = [...lunches];
@@ -65,7 +68,7 @@ export function Lunch() {
   return (
     <>
       <Title>
-        <Typography variant="h2">Lunch</Typography>
+        <Typography variant="h2">{t("lunch")}</Typography>
       </Title>
       <HorizontalLine />
       <GridContainer>
@@ -114,7 +117,7 @@ export function Lunch() {
           }}
         >
           <Typography variant="subtitle2">
-            <Text>Load more</Text>
+            <Text>{t("loadbtn")}</Text>
           </Typography>
         </Button>
       </LoadMoreButton>

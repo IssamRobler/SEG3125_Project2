@@ -3,6 +3,7 @@ import { width } from "@mui/system";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { PageTitle, Text } from "../../components/typography/Typography";
+import { useTranslation } from "react-i18next";
 
 const paperStyle = {
   width: "50vh",
@@ -11,18 +12,19 @@ const paperStyle = {
   margin: "5% auto",
 };
 export function Login() {
+  const { t } = useTranslation(["loginForm"]);
   return (
     <Paper elevation={3} style={paperStyle}>
       <Form>
         <Typography variant="h5" style={{ textAlign: "center" }}>
-          <Text>Login</Text>
+          <Text>{t("title")}</Text>
         </Typography>
         <UserInputs>
           <div>
             <TextField
               required
               id="outlined-required"
-              label="Email"
+              label={t("email")}
               style={{ background: "white" }}
               fullWidth
               variant="filled"
@@ -31,7 +33,7 @@ export function Login() {
           <div>
             <TextField
               required
-              label="Password"
+              label={t("password")}
               style={{ background: "white" }}
               type="password"
               fullWidth
@@ -43,23 +45,22 @@ export function Login() {
           <Checkbox>
             <input id="rememberMe" type="checkbox" />
             <label htmlFor="rememberMe">
-              <Text>Remember me</Text>
+              <Text>{t("rememberMe")}</Text>
             </label>
           </Checkbox>
-          <Link to="/forgotPassword">
-            <Text>Forgot password?</Text>
-          </Link>
+
+          <Text>{t("forgotPassword")}</Text>
         </RememberMeContainer>
         <Button
           variant="container"
           style={{ backgroundColor: "#CC9933", padding: "15px" }}
         >
           <Typography variant="subtitle2">
-            <Text>Login</Text>
+            <Text>{t("loginBtn")}</Text>
           </Typography>
         </Button>
         <Link to="/createAccount" style={{ textAlign: "center" }}>
-          <Text>Create Account</Text>
+          <Text>{t("createAccount")}</Text>
         </Link>
       </Form>
     </Paper>

@@ -5,12 +5,13 @@ import { Typography, Button, TextField } from "@mui/material";
 import { Text } from "../../components/typography/Typography";
 import * as React from "react";
 import MenuItem from "@mui/material/MenuItem";
-import french_toast_img from "../../assets/img/breakfast/frenchtoast.jpg";
-import omelette_img from "../../assets/img/breakfast/omelette.jpg";
-import pancake_img from "../../assets/img/breakfast/pancake.jpg";
-import pizza_img from "../../assets/img/lunch/pizza.jpg";
-import hot_dog_img from "../../assets/img/lunch/hotdog.jpg";
-import burger_img from "../../assets/img/lunch/burger.jpg";
+import french_toast_img from "../../img/breakfast/frenchtoast.jpg";
+import omelette_img from "../../img/breakfast/omelette.jpg";
+import pancake_img from "../../img/breakfast/pancake.jpg";
+import pizza_img from "../../img/lunch/pizza.jpg";
+import hot_dog_img from "../../img/lunch/hotdog.jpg";
+import burger_img from "../../img/lunch/burger.jpg";
+import { useTranslation } from "react-i18next";
 
 const DEFAULT_MOST_RECENT = [
   {
@@ -51,20 +52,21 @@ const DEFAULT_MOST_RECENT = [
   },
 ];
 
-const sortByOptions = [
-  {
-    value: "newest",
-    label: "Newest",
-  },
-  {
-    value: "oldest",
-    label: "Oldest",
-  },
-];
-
 export function Home() {
   const [sortOrder, setSortOrder] = React.useState("newest");
   const [food, setFood] = React.useState(DEFAULT_MOST_RECENT);
+  const { t } = useTranslation(["home", "common"]);
+
+  const sortByOptions = [
+    {
+      value: "newest",
+      label: t("common:sortNew"),
+    },
+    {
+      value: "oldest",
+      label: t("common:sortOld"),
+    },
+  ];
 
   React.useEffect(() => {
     const copy = [...food];
@@ -87,16 +89,16 @@ export function Home() {
   return (
     <>
       <Title>
-        <Typography variant="h2">Welcome to BestRecipe !</Typography>
+        <Typography variant="h2">{t("title")}</Typography>
       </Title>
       <div style={{ textAlign: "center", margin: "30px" }}>
         <Typography variant="h5" align="center">
-          A place for foodies and culinary explorers
+          {t("description")}
         </Typography>
       </div>
       <div style={{ textAlign: "center", margin: "30px" }}>
         <Typography variant="body" align="center">
-          View and Share recipes with others
+          {t("subdescription")}
         </Typography>
       </div>
       <HorizontalLine />
@@ -146,7 +148,7 @@ export function Home() {
           }}
         >
           <Typography variant="subtitle2">
-            <Text>Load more</Text>
+            <Text>{t("common:loadbtn")}</Text>
           </Typography>
         </Button>
       </LoadMoreButton>

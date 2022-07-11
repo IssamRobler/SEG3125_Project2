@@ -8,6 +8,7 @@ import * as React from "react";
 import { MainInfo } from "./MainInfo";
 import { Ingredients } from "./Ingredients";
 import { Instructions } from "./Instructions";
+import { useTranslation } from "react-i18next";
 const timeUnits = [
   {
     value: "hours",
@@ -54,7 +55,7 @@ export function ShareRecipe() {
     instructions: ["", "", ""],
   });
 
-  console.log(formData.num_servings);
+  const { t } = useTranslation(["shareRecipeForm"]);
   const [step, setStep] = React.useState(0);
   const navigate = useNavigate();
 
@@ -176,7 +177,7 @@ export function ShareRecipe() {
       <Form>
         <TitleContainer>
           <Typography variant="h5" style={{ textAlign: "center" }}>
-            <Text>Share a Recipe</Text>
+            <Text>{t("title")}</Text>
           </Typography>
         </TitleContainer>
         {getCurrentStep()}
@@ -193,7 +194,7 @@ export function ShareRecipe() {
             onClick={handlePrevStep}
           >
             <Typography variant="subtitle2">
-              <Text>Prev</Text>
+              <Text>{t("backBtn")}</Text>
             </Typography>
           </Button>
           <Button
@@ -206,7 +207,7 @@ export function ShareRecipe() {
             onClick={step < 2 ? handleNextStep : handleSubmitRecipe}
           >
             <Typography variant="subtitle2">
-              <Text>{step < 2 ? "Next" : "Submit"}</Text>
+              <Text>{step < 2 ? t("nextBtn") : t("submitBtn")}</Text>
             </Typography>
           </Button>
         </ButtonContainer>

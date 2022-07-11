@@ -5,16 +5,7 @@ import { Link } from "react-router-dom";
 import { PageTitle, Text } from "../../components/typography/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import * as React from "react";
-const weightUnit = [
-  {
-    value: "gram",
-    label: "g",
-  },
-  {
-    value: "kilogram",
-    label: "kg",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export function Instructions({
   instructionStepHandler,
@@ -22,6 +13,8 @@ export function Instructions({
   removeInstructionHandler,
   addInstructionHandler,
 }) {
+  const { t } = useTranslation(["shareRecipeForm"]);
+
   return (
     <UserInputs>
       {instructionInfoData.map((value, index) => {
@@ -30,7 +23,7 @@ export function Instructions({
             <TextField
               fullWidth
               name="name"
-              label={`Instruction #${index + 1}`}
+              label={`${t("instruction")} #${index + 1}`}
               style={{ background: "white" }}
               variant="filled"
               onChange={instructionStepHandler(index)}
@@ -51,7 +44,7 @@ export function Instructions({
           }}
           onClick={addInstructionHandler}
         >
-          Add Instruction
+          {t("addInstructionBtn")}
         </Button>
         <Button
           variant="container"
@@ -67,7 +60,7 @@ export function Instructions({
           }}
           onClick={removeInstructionHandler}
         >
-          Remove Instruction
+          {t("removeInstructionBtn")}
         </Button>
       </ButtonContainer>
     </UserInputs>

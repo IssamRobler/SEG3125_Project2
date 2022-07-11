@@ -6,10 +6,12 @@ import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import img from "../../assets/img/foodpreview.png";
+import img from "../../img/foodpreview.png";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function FoodCard(props) {
+  const { t } = useTranslation(["foodcard"]);
   return (
     <Card
       sx={{
@@ -37,7 +39,7 @@ export default function FoodCard(props) {
       </CardContent>
       <CardActions>
         <Link to="/viewRecipe">
-          <Button size="small">View Recipe</Button>
+          <Button size="small">{t("link")}</Button>
         </Link>
       </CardActions>
     </Card>
