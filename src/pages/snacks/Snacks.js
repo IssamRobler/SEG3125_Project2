@@ -5,9 +5,10 @@ import { Typography, Button, TextField } from "@mui/material";
 import { Text } from "../../components/typography/Typography";
 import * as React from "react";
 import MenuItem from "@mui/material/MenuItem";
-import fruit_snack_img from "../../assets/img/snacks/fruit_snack.jpg";
-import granola_img from "../../assets/img/snacks/granola.jpg";
-import pinwheel_pizza_img from "../../assets/img/snacks/pinwheel_pizza.jpg";
+import fruit_snack_img from "../../img/snacks/fruit_snack.jpg";
+import granola_img from "../../img/snacks/granola.jpg";
+import pinwheel_pizza_img from "../../img/snacks/pinwheel_pizza.jpg";
+import { useTranslation } from "react-i18next";
 
 const DEFAULT_SNACKS = [
   {
@@ -43,6 +44,18 @@ const sortByOptions = [
 export function Snacks() {
   const [sortOrder, setSortOrder] = React.useState("newest");
   const [snacks, setSnacks] = React.useState(DEFAULT_SNACKS);
+  const { t } = useTranslation(["common"]);
+
+  const sortByOptions = [
+    {
+      value: "newest",
+      label: t("sortNew"),
+    },
+    {
+      value: "oldest",
+      label: t("sortOld"),
+    },
+  ];
 
   React.useEffect(() => {
     const copy = [...snacks];
@@ -65,7 +78,7 @@ export function Snacks() {
   return (
     <>
       <Title>
-        <Typography variant="h2">Snacks</Typography>
+        <Typography variant="h2">{t("snack")}</Typography>
       </Title>
       <HorizontalLine />
       <GridContainer>
@@ -114,7 +127,7 @@ export function Snacks() {
           }}
         >
           <Typography variant="subtitle2">
-            <Text>Load more</Text>
+            <Text>{t("loadbtn")}</Text>
           </Typography>
         </Button>
       </LoadMoreButton>

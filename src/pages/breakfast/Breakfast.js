@@ -5,9 +5,10 @@ import { Typography, Button, TextField } from "@mui/material";
 import { Text } from "../../components/typography/Typography";
 import * as React from "react";
 import MenuItem from "@mui/material/MenuItem";
-import french_toast_img from "../../assets/img/breakfast/frenchtoast.jpg";
-import omelette_img from "../../assets/img/breakfast/omelette.jpg";
-import pancake_img from "../../assets/img/breakfast/pancake.jpg";
+import french_toast_img from "../../img/breakfast/frenchtoast.jpg";
+import omelette_img from "../../img/breakfast/omelette.jpg";
+import pancake_img from "../../img/breakfast/pancake.jpg";
+import { useTranslation } from "react-i18next";
 const DEFAULT_BREAKFAST = [
   {
     recipe_title: "French Toast",
@@ -43,6 +44,18 @@ const sortByOptions = [
 export function Breakfast() {
   const [sortOrder, setSortOrder] = React.useState("newest");
   const [breakfast, setBreakfast] = React.useState(DEFAULT_BREAKFAST);
+  const { t } = useTranslation(["common"]);
+
+  const sortByOptions = [
+    {
+      value: "newest",
+      label: t("sortNew"),
+    },
+    {
+      value: "oldest",
+      label: t("sortOld"),
+    },
+  ];
 
   React.useEffect(() => {
     const copy = [...breakfast];
@@ -65,7 +78,7 @@ export function Breakfast() {
   return (
     <>
       <Title>
-        <Typography variant="h2">Breakfast</Typography>
+        <Typography variant="h2">{t("breakfast")}</Typography>
       </Title>
       <HorizontalLine />
       <GridContainer>
@@ -114,7 +127,7 @@ export function Breakfast() {
           }}
         >
           <Typography variant="subtitle2">
-            <Text>Load more</Text>
+            <Text>{t("loadbtn")}</Text>
           </Typography>
         </Button>
       </LoadMoreButton>

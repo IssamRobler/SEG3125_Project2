@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { PageTitle, Text } from "../../components/typography/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 
 const timeUnits = [
   {
@@ -23,17 +24,18 @@ const paperStyle = {
   margin: "5% auto",
 };
 export function SucessShareRecipe() {
+  const { t } = useTranslation(["shareRecipeSuccess"]);
   return (
     <Paper elevation={3} style={paperStyle}>
       <Sucess>
         <TitleContainer>
           <Typography variant="h5" style={{ textAlign: "center" }}>
-            <Text>Sucess</Text>
+            <Text>{t("title")}</Text>
           </Typography>
         </TitleContainer>
 
         <Typography variant="h6" style={{ textAlign: "center" }}>
-          <Text>You have sucessfully shared your recipe !</Text>
+          <Text>{t("description")}</Text>
         </Typography>
 
         <Link to="/">
@@ -42,7 +44,7 @@ export function SucessShareRecipe() {
             style={{ backgroundColor: "#CC9933", padding: "15px" }}
           >
             <Typography variant="subtitle2">
-              <Text>Back to Home</Text>
+              <Text>{t("backToHomeBtn")}</Text>
             </Typography>
           </Button>
         </Link>

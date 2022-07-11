@@ -5,9 +5,10 @@ import { Typography, Button, TextField } from "@mui/material";
 import { Text } from "../../components/typography/Typography";
 import * as React from "react";
 import MenuItem from "@mui/material/MenuItem";
-import kor_chicken_img from "../../assets/img/dinner/korean_fried_chicken.jpg";
-import lasagna_img from "../../assets/img/dinner/lasagna.jpg";
-import spagetti_img from "../../assets/img/dinner/spagetti_bolognese.jpg";
+import kor_chicken_img from "../../img/dinner/korean_fried_chicken.jpg";
+import lasagna_img from "../../img/dinner/lasagna.jpg";
+import spagetti_img from "../../img/dinner/spagetti_bolognese.jpg";
+import { useTranslation } from "react-i18next";
 
 const DEFAULT_DINNER = [
   {
@@ -30,20 +31,21 @@ const DEFAULT_DINNER = [
   },
 ];
 
-const sortByOptions = [
-  {
-    value: "newest",
-    label: "Newest",
-  },
-  {
-    value: "oldest",
-    label: "Oldest",
-  },
-];
-
 export function Dinner() {
   const [sortOrder, setSortOrder] = React.useState("newest");
   const [dinner, setDinner] = React.useState(DEFAULT_DINNER);
+  const { t } = useTranslation(["common"]);
+
+  const sortByOptions = [
+    {
+      value: "newest",
+      label: t("sortNew"),
+    },
+    {
+      value: "oldest",
+      label: t("sortOld"),
+    },
+  ];
 
   React.useEffect(() => {
     const copy = [...dinner];
@@ -58,7 +60,6 @@ export function Dinner() {
         break;
     }
   }, [sortOrder]);
-
   const handleSortTypeChange = (e) => {
     setSortOrder(e.target.value);
   };
@@ -66,7 +67,7 @@ export function Dinner() {
   return (
     <>
       <Title>
-        <Typography variant="h2">Dinner</Typography>
+        <Typography variant="h2">{t("dinner")}</Typography>
       </Title>
       <HorizontalLine />
       <GridContainer>
@@ -115,7 +116,7 @@ export function Dinner() {
           }}
         >
           <Typography variant="subtitle2">
-            <Text>Load more</Text>
+            <Text>{t("loadbtn")}</Text>
           </Typography>
         </Button>
       </LoadMoreButton>

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { PageTitle, Text } from "../../components/typography/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 const weightUnit = [
   {
     value: "gram",
@@ -22,6 +23,7 @@ export function Ingredients({
   removeIngredientHandler,
   addIngredientHandler,
 }) {
+  const { t } = useTranslation(["shareRecipeForm"]);
   return (
     <UserInputs>
       {ingredientInfoData.map((value, index) => {
@@ -31,7 +33,7 @@ export function Ingredients({
               <TextField
                 required
                 name="name"
-                label="Ingredient name"
+                label={`${t("ingredientName")}`}
                 style={{ background: "white" }}
                 variant="filled"
                 onChange={(event) => ingredientStepHandler(event, index)}
@@ -43,7 +45,7 @@ export function Ingredients({
                 <TextField
                   required
                   name="amount"
-                  label="weight"
+                  label={t("weight")}
                   style={{ background: "white" }}
                   type="number"
                   variant="filled"
@@ -54,7 +56,7 @@ export function Ingredients({
               <div>
                 <TextField
                   select
-                  label="unit"
+                  label={t("unit")}
                   name="unit"
                   style={{ background: "white" }}
                   variant="filled"
@@ -84,7 +86,7 @@ export function Ingredients({
           }}
           onClick={addIngredientHandler}
         >
-          Add Ingredient
+          {t("addIngredientBtn")}
         </Button>
         <Button
           variant="container"
@@ -100,7 +102,7 @@ export function Ingredients({
           }}
           onClick={removeIngredientHandler}
         >
-          Remove Ingredient
+          {t("removeIngredientBtn")}
         </Button>
       </ButtonContainer>
     </UserInputs>

@@ -3,6 +3,7 @@ import { width } from "@mui/system";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { PageTitle, Text } from "../../components/typography/Typography";
+import { useTranslation } from "react-i18next";
 
 const paperStyle = {
   width: "50vh",
@@ -11,18 +12,19 @@ const paperStyle = {
   margin: "5% auto",
 };
 export function CreateAccount() {
+  const { t } = useTranslation(["createAccountForm"]);
   return (
     <Paper elevation={3} style={paperStyle}>
       <Form>
         <Typography variant="h5" style={{ textAlign: "center" }}>
-          <Text>Sign Up</Text>
+          <Text>{t("title")}</Text>
         </Typography>
         <UserInputs>
           <div>
             <TextField
               required
               id="outlined-required"
-              label="Email"
+              label={t("email")}
               style={{ background: "white" }}
               fullWidth
               variant="filled"
@@ -31,7 +33,7 @@ export function CreateAccount() {
           <div>
             <TextField
               required
-              label="Password"
+              label={t("password")}
               style={{ background: "white" }}
               type="password"
               fullWidth
@@ -41,7 +43,7 @@ export function CreateAccount() {
           <div>
             <TextField
               required
-              label="Retype password"
+              label={t("retypePassword")}
               style={{ background: "white" }}
               type="password"
               fullWidth
@@ -54,7 +56,7 @@ export function CreateAccount() {
           style={{ backgroundColor: "#CC9933", padding: "15px" }}
         >
           <Typography variant="subtitle2">
-            <Text>Create Account</Text>
+            <Text>{t("createAccountBtn")}</Text>
           </Typography>
         </Button>
       </Form>
