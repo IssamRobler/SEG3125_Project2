@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { PageTitle, Text } from "../../components/typography/Typography";
 import { useTranslation } from "react-i18next";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import { useState } from "react";
 
 const paperStyle = {
   width: "50vh",
@@ -13,6 +16,38 @@ const paperStyle = {
 };
 export function Login() {
   const { t } = useTranslation(["loginForm"]);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({ title: "", msg: "" });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLoginClicked = () => {
+    if (!email || email === "") {
+      setIsError(true);
+      setError({
+        title: t("missingEmailErrorTitle"),
+        msg: t("missingEmailErrorMsg"),
+      });
+    } else if (!password || password === "") {
+      setIsError(true);
+      setError({
+        title: t("missingPasswordErrorTitle"),
+        msg: t("missingPasswordErrorMsg"),
+      });
+    } else {
+      setIsError(false);
+      setError({ title: "", msg: "" });
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
   return (
     <Paper elevation={3} style={paperStyle}>
       <Form>
@@ -28,6 +63,7 @@ export function Login() {
               style={{ background: "white" }}
               fullWidth
               variant="filled"
+              onChange={handleEmailChange}
             />
           </div>
           <div>
@@ -38,6 +74,7 @@ export function Login() {
               type="password"
               fullWidth
               variant="filled"
+              onChange={handlePasswordChange}
             />
           </div>
         </UserInputs>
@@ -54,6 +91,7 @@ export function Login() {
         <Button
           variant="container"
           style={{ backgroundColor: "#CC9933", padding: "15px" }}
+          onClick={handleLoginClicked}
         >
           <Typography variant="subtitle2">
             <Text>{t("loginBtn")}</Text>
@@ -62,11 +100,19 @@ export function Login() {
         <Link to="/createAccount" style={{ textAlign: "center" }}>
           <Text>{t("createAccount")}</Text>
         </Link>
+        {!isError || (
+          <Alert severity="error">
+            <AlertTitle>{error.title}</AlertTitle>
+            {error.msg}
+          </Alert>
+        )}
       </Form>
     </Paper>
   );
 }
-
+const Error = styled.div`
+  margin: 3vh 0;
+`;
 const Checkbox = styled.div`
   display: flex;
   justify-content: space-between;

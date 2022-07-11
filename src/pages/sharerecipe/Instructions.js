@@ -48,11 +48,11 @@ export function Instructions({
         </Button>
         <Button
           variant="container"
-          disabled={instructionInfoData.length <= 3}
+          disabled={instructionInfoData.length <= 0}
           size="small"
           style={{
             backgroundColor: "#339999",
-            opacity: instructionInfoData.length <= 3 ? "0.5" : "1",
+            opacity: instructionInfoData.length <= 0 ? "0.5" : "1",
             fontSize: "8px",
             color: "white",
             width: "5px",

@@ -4,11 +4,14 @@ import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { PageTitle, Text } from "../../components/typography/Typography";
 import MenuItem from "@mui/material/MenuItem";
-import * as React from "react";
+import { useState, useCallback } from "react";
 import { MainInfo } from "./MainInfo";
 import { Ingredients } from "./Ingredients";
 import { Instructions } from "./Instructions";
 import { useTranslation } from "react-i18next";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+
 const timeUnits = [
   {
     value: "hours",
@@ -26,7 +29,7 @@ const paperStyle = {
   margin: "5% auto",
 };
 export function ShareRecipe() {
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     recipe_name: "",
     recipe_summary: "",
     prep_time_number: 0,
@@ -35,28 +38,108 @@ export function ShareRecipe() {
     cook_time_unit: "hours",
     num_servings: 0,
     food_type: "Breakfast",
-    ingredients: [
-      {
-        name: "",
-        amount: 0,
-        unit: "gram",
-      },
-      {
-        name: "",
-        amount: 0,
-        unit: "gram",
-      },
-      {
-        name: "",
-        amount: 0,
-        unit: "gram",
-      },
-    ],
-    instructions: ["", "", ""],
+    ingredients: [],
+    instructions: [],
   });
 
   const { t } = useTranslation(["shareRecipeForm"]);
-  const [step, setStep] = React.useState(0);
+  const [step, setStep] = useState(0);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({ title: "", msg: "" });
+  console.log(step);
+  const handleNextStep = () => {
+    if (step === 0 && (!formData.recipe_name || formData.recipe_name === "")) {
+      setIsError(true);
+      setError({
+        title: t("missingRecipeNameErrorTitle"),
+        msg: t("missingRecipeNameErrorMsg"),
+      });
+    } else if (
+      step === 0 &&
+      (!formData.recipe_summary || formData.recipe_summary === "")
+    ) {
+      setIsError(true);
+      setError({
+        title: t("missingRecipeSummaryErrorTitle"),
+        msg: t("missingRecipeSummaryErrorMsg"),
+      });
+    } else if (step === 0 && parseInt(formData.prep_time_number) < 0) {
+      setIsError(true);
+      setError({
+        title: t("invalidPrepTimeNumberErrorTitle"),
+        msg: t("invalidPrepTimeNumberErrorMsg"),
+      });
+    } else if (step === 0 && parseInt(formData.cook_time_number) < 0) {
+      setIsError(true);
+      setError({
+        title: t("invalidCookTimeNumberErrorTitle"),
+        msg: t("invalidCookTimeNumberErrorMsg"),
+      });
+    } else if (step === 0 && parseInt(formData.num_servings) < 0) {
+      setIsError(true);
+      setError({
+        title: t("invalidServingsNumberErrorTitle"),
+        msg: t("invalidServingsNumberErrorMsg"),
+      });
+    } else if (step === 1 && formData.ingredients.length <= 0) {
+      setIsError(true);
+      setError({
+        title: t("missingIngredientsErrorTitle"),
+        msg: t("missingIngredientsErrorMsg"),
+      });
+    } else if (
+      step === 1 &&
+      formData.ingredients.some(
+        (ingredient) => !ingredient.name || ingredient.name === ""
+      )
+    ) {
+      setIsError(true);
+      setError({
+        title: t("missingIngredientNameErrorTitle"),
+        msg: t("missingIngredientNameErrorMsg"),
+      });
+    } else if (
+      step === 1 &&
+      formData.ingredients.some((ingredient) => parseInt(ingredient.amount) < 0)
+    ) {
+      setIsError(true);
+      setError({
+        title: t("invalidWeightNumberErrorTitle"),
+        msg: t("invalidWeightNumberErrorMsg"),
+      });
+    } else if (step === 2 && formData.instructions.length <= 0) {
+      setIsError(true);
+      console.log("jere");
+      setError({
+        title: t("missingInstructionsErrorTitle"),
+        msg: t("missingInstructionsErrorMsg"),
+      });
+    } else if (
+      step === 2 &&
+      formData.instructions.some(
+        (instruction) => !instruction || instruction === ""
+      )
+    ) {
+      console.log("here");
+      setIsError(true);
+      setError({
+        title: t("missingInstructionContentErrorTitle"),
+        msg: t("missingInstructionContentErrorMsg"),
+      });
+      return false;
+    } else {
+      setIsError(false);
+      setError({
+        title: "",
+        msg: "",
+      });
+      if (step < 2) {
+        setStep(step + 1);
+      } else {
+        navigate("/sucessShareRecipe");
+      }
+    }
+  };
   const navigate = useNavigate();
 
   const handleMainInfoChange = (input) => (e) => {
@@ -124,19 +207,11 @@ export function ShareRecipe() {
     }));
   };
 
-  const handleNextStep = () => {
-    setStep(step + 1);
-  };
-
-  const handleSubmitRecipe = () => {
-    navigate("/sucessShareRecipe");
-  };
-
   const handlePrevStep = () => {
     setStep(step - 1);
   };
 
-  const getCurrentStep = React.useCallback(() => {
+  const getCurrentStep = useCallback(() => {
     switch (step) {
       case 0:
         return (
@@ -204,13 +279,19 @@ export function ShareRecipe() {
               padding: "15px",
               width: "30%",
             }}
-            onClick={step < 2 ? handleNextStep : handleSubmitRecipe}
+            onClick={handleNextStep}
           >
             <Typography variant="subtitle2">
               <Text>{step < 2 ? t("nextBtn") : t("submitBtn")}</Text>
             </Typography>
           </Button>
         </ButtonContainer>
+        {!isError || (
+          <Alert severity="error">
+            <AlertTitle>{error.title}</AlertTitle>
+            {error.msg}
+          </Alert>
+        )}
       </Form>
     </Paper>
   );
@@ -231,7 +312,7 @@ const Form = styled.form`
 
   min-height: 50vh;
   padding: 10%;
-  width: 75%;
+
   > div {
     margin: 20px 0;
   }

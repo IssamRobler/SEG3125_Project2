@@ -31,7 +31,6 @@ export function Ingredients({
           <IngredientItem key={index}>
             <IngredientName>
               <TextField
-                required
                 name="name"
                 label={`${t("ingredientName")}`}
                 style={{ background: "white" }}
@@ -43,10 +42,10 @@ export function Ingredients({
             <AmountValue>
               <div>
                 <TextField
-                  required
                   name="amount"
                   label={t("weight")}
                   style={{ background: "white" }}
+                  InputProps={{ inputProps: { min: 0 } }}
                   type="number"
                   variant="filled"
                   onChange={(event) => ingredientStepHandler(event, index)}
@@ -90,11 +89,11 @@ export function Ingredients({
         </Button>
         <Button
           variant="container"
-          disabled={ingredientInfoData.length <= 3}
+          disabled={ingredientInfoData.length <= 0}
           size="small"
           style={{
             backgroundColor: "#339999",
-            opacity: ingredientInfoData.length <= 3 ? "0.5" : "1",
+            opacity: ingredientInfoData.length <= 0 ? "0.5" : "1",
             fontSize: "8px",
             color: "white",
             width: "5px",

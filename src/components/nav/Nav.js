@@ -73,6 +73,7 @@ export function Nav() {
             variant="standard"
             onChange={(e) => {
               i18n.changeLanguage(e.target.value);
+              window.location.reload();
             }}
             value={i18n.language}
           >
