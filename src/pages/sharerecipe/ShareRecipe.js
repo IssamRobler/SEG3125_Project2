@@ -242,7 +242,7 @@ export function ShareRecipe() {
       <Form>
         <TitleContainer>
           <Typography variant="h5" style={{ textAlign: "center" }}>
-            <Text>{t("title")}</Text>
+            <Text>{t(`step${step}`)}</Text>
           </Typography>
         </TitleContainer>
         {getCurrentStep()}
