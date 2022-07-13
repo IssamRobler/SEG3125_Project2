@@ -5,31 +5,11 @@ import { Typography, Button, TextField } from "@mui/material";
 import { Text } from "../../components/typography/Typography";
 import * as React from "react";
 import MenuItem from "@mui/material/MenuItem";
-import kor_chicken_img from "../../img/dinner/korean_fried_chicken.jpg";
-import lasagna_img from "../../img/dinner/lasagna.jpg";
-import spagetti_img from "../../img/dinner/spagetti_bolognese.jpg";
-import { useTranslation } from "react-i18next";
 
-const DEFAULT_DINNER = [
-  {
-    recipe_title: "Korean Fried Chicken",
-    recipe_upload_date: new Date(2016, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: kor_chicken_img,
-  },
-  {
-    recipe_title: "Lasagna",
-    recipe_upload_date: new Date(2015, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: lasagna_img,
-  },
-  {
-    recipe_title: "Spagetti Bolognese",
-    recipe_upload_date: new Date(2014, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: spagetti_img,
-  },
-];
+import { useTranslation } from "react-i18next";
+import { MOCK_DATA } from "../../mock_data/recipes";
+
+const DEFAULT_DINNER = MOCK_DATA.filter((d) => d.food_type === "Dinner");
 
 export function Dinner() {
   const [sortOrder, setSortOrder] = React.useState("newest");
@@ -100,6 +80,7 @@ export function Dinner() {
                   .join(" ")}
                 recipe_summary={value.recipe_summary}
                 recipe_img={value.recipe_img}
+                recipe_id={value.id}
               />
             );
           })}

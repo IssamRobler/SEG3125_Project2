@@ -5,52 +5,12 @@ import { Typography, Button, TextField } from "@mui/material";
 import { Text } from "../../components/typography/Typography";
 import * as React from "react";
 import MenuItem from "@mui/material/MenuItem";
-import french_toast_img from "../../img/breakfast/frenchtoast.jpg";
-import omelette_img from "../../img/breakfast/omelette.jpg";
-import pancake_img from "../../img/breakfast/pancake.jpg";
-import pizza_img from "../../img/lunch/pizza.jpg";
-import hot_dog_img from "../../img/lunch/hotdog.jpg";
-import burger_img from "../../img/lunch/burger.jpg";
 import { useTranslation } from "react-i18next";
+import { MOCK_DATA } from "../../mock_data/recipes";
 
-const DEFAULT_MOST_RECENT = [
-  {
-    recipe_title: "Burger",
-    recipe_upload_date: new Date(2020, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: burger_img,
-  },
-  {
-    recipe_title: "Hot dog",
-    recipe_upload_date: new Date(2021, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: hot_dog_img,
-  },
-  {
-    recipe_title: "Pizza",
-    recipe_upload_date: new Date(2022, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: pizza_img,
-  },
-  {
-    recipe_title: "French Toast",
-    recipe_upload_date: new Date(2019, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: french_toast_img,
-  },
-  {
-    recipe_title: "Omelette",
-    recipe_upload_date: new Date(2018, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: omelette_img,
-  },
-  {
-    recipe_title: "Pancake",
-    recipe_upload_date: new Date(2017, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: pancake_img,
-  },
-];
+const DEFAULT_MOST_RECENT = MOCK_DATA.sort(
+  (l1, l2) => l2.recipe_upload_date - l1.recipe_upload_date
+);
 
 export function Home() {
   const [sortOrder, setSortOrder] = React.useState("newest");
@@ -67,6 +27,8 @@ export function Home() {
       label: t("common:sortOld"),
     },
   ];
+
+  console.log(DEFAULT_MOST_RECENT);
 
   React.useEffect(() => {
     const copy = [...food];
@@ -132,6 +94,7 @@ export function Home() {
                   .join(" ")}
                 recipe_summary={value.recipe_summary}
                 recipe_img={value.recipe_img}
+                recipe_id={value.id}
               />
             );
           })}

@@ -1,95 +1,89 @@
 import styled from "styled-components";
 import { TextField, Typography } from "@mui/material";
-import img from "../../img/foodpreview.png";
 import { Button } from "@mui/material";
+import { useParams } from "react-router-dom";
+import { MOCK_DATA } from "../../mock_data/recipes";
+import { useTranslation } from "react-i18next";
+
 export function ViewRecipe() {
+  const { id } = useParams();
+  const recipe = MOCK_DATA.filter((d) => d.id === parseInt(id))[0];
+  const { t } = useTranslation(["common"]);
   return (
     <RecipeContainer>
-      <Typography variant="h3">Food title</Typography>
+      <Typography variant="h3">{recipe.recipe_title}</Typography>
       <HorizontalLine />
 
       <FoodDescriptionContainer>
         <FoodPreview>
-          <img src={img} />
+          <img src={recipe.recipe_img} width={600} height={400} />
           <FoodNumerics>
             <div>
               <Typography variant="h6">
-                <strong>Prep time</strong>
+                <strong>{t("prepTime")}</strong>
               </Typography>
-              <Typography variant="h6">10 min</Typography>
+              <Typography variant="h6">{`${recipe.prep_time_number} ${recipe.prep_time_unit}`}</Typography>
             </div>
             <div>
               <Typography variant="h6">
-                <strong>Cook time</strong>
+                <strong>{t("cookTime")}</strong>
               </Typography>
-              <Typography variant="h6">10 min</Typography>
+              <Typography variant="h6">{`${recipe.cook_time_number} ${recipe.cook_time_unit}`}</Typography>
             </div>
             <div>
               <Typography variant="h6">
-                <strong>Servings</strong>
+                <strong>{t("servings")}</strong>
               </Typography>
-              <Typography variant="h6">2-10</Typography>
+              <Typography variant="h6">{recipe.num_servings}</Typography>
             </div>
           </FoodNumerics>
         </FoodPreview>
 
-        <Typography variant="h6">Food description</Typography>
+        <Typography variant="h6">{recipe.recipe_summary}</Typography>
         <UserInfo>
           <Typography variant="h6">By user</Typography>
         </UserInfo>
       </FoodDescriptionContainer>
 
-      <Typography variant="h4">Ingredients</Typography>
+      <Typography variant="h4">{t("ingredients")}</Typography>
       <HorizontalLine />
       <List>
         <ul>
-          <li>
-            <Typography variant="h6">Ingredient #1</Typography>
-          </li>
-          <li>
-            <Typography variant="h6">Ingredient #2</Typography>
-          </li>
-          <li>
-            <Typography variant="h6">Ingredient #3</Typography>
-          </li>
-          <li>
-            <Typography variant="h6">Ingredient #4</Typography>
-          </li>
-          <li>
-            <Typography variant="h6">Ingredient #5</Typography>
-          </li>
+          {recipe.ingredients.map((ingredient) => {
+            return (
+              <li>
+                <Typography variant="h6">{`${ingredient.name}, ${
+                  ingredient.amount
+                } ${
+                  ingredient.unit === "N/A" ? "" : ingredient.unit
+                }`}</Typography>
+              </li>
+            );
+          })}
         </ul>
       </List>
 
-      <Typography variant="h4">Instructions</Typography>
+      <Typography variant="h4">{t("instructions")}</Typography>
       <HorizontalLine />
       <List>
         <ul>
-          <li>
-            <Typography variant="h6">Instruction #1</Typography>
-          </li>
-          <li>
-            <Typography variant="h6">Instruction #2</Typography>
-          </li>
-          <li>
-            <Typography variant="h6">Instruction #3</Typography>
-          </li>
-          <li>
-            <Typography variant="h6">Instruction #4</Typography>
-          </li>
-          <li>
-            <Typography variant="h6">Instruction #5</Typography>
-          </li>
+          {recipe.instructions.map((instruction) => {
+            return (
+              <li>
+                <Typography variant="h6">{instruction}</Typography>
+              </li>
+            );
+          })}
         </ul>
       </List>
 
       <CommentSection>
-        <Typography variant="h4">Leave a comment</Typography>
+        <Typography variant="h4">{t("leaveComment")}</Typography>
         <CommentField>
           <TextField multiline fullWidth />
           <SignupLoginButton>
             <Button variant="container">
-              <Typography variant="subtitle2">submit</Typography>
+              <Typography variant="subtitle2">{t("submitBtn")}</Typography>
             </Button>
           </SignupLoginButton>
         </CommentField>

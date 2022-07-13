@@ -38,7 +38,7 @@ export default function FoodCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link to="/viewRecipe">
+        <Link to={`/viewRecipe/${props.recipe_id}`}>
           <Button size="small">{t("link")}</Button>
         </Link>
       </CardActions>

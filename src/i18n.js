@@ -29,6 +29,13 @@ i18n
           sortNew: "Newest",
           sortOld: "Oldest",
           sortOrder: "Sort order",
+          prepTime: "Prep time",
+          cookTime: "Cook time",
+          servings: "Servings",
+          instructions: "Instructions",
+          ingredients: "Ingredients",
+          leaveComment: "Leave a comment",
+          submitBtn: "Submit",
         },
         loginForm: {
           title: "Login",
@@ -85,22 +92,25 @@ i18n
           missingRecipeSummaryErrorTitle: "Missing recipe summary",
           missingRecipeSummaryErrorMsg: "Please supply your recipe summary.",
           invalidPrepTimeNumberErrorTitle: "Invalid prep time number",
-          invalidPrepTimeNumberErrorMsg: "You cannot have a negative prep time.",
+          invalidPrepTimeNumberErrorMsg:
+            "You cannot have a negative prep time.",
           invalidCookTimeNumberErrorTitle: "Invalid cook time number",
-          invalidCookTimeNumberErrorMsg: "You cannot have a negative cook time.",
+          invalidCookTimeNumberErrorMsg:
+            "You cannot have a negative cook time.",
           invalidServingsNumberErrorTitle: "Invalid servings number",
           invalidServingsNumberErrorMsg: "You cannot have a negative servings.",
           missingIngredientsErrorTitle: "Missing ingredients",
           missingIngredientsErrorMsg: "Please supply your ingredients.",
           missingIngredientNameErrorTitle: "Missing ingredient name",
-          missingIngredientNameErrorMsg: "Please supply your ingredient names, some are empty.",
+          missingIngredientNameErrorMsg:
+            "Please supply your ingredient names, some are empty.",
           missingInstructionsErrorTitle: "Missing instructions",
           missingInstructionsErrorMsg: "Please supply your instructions.",
           missingInstructionContentErrorTitle: "Missing instruction content",
-          missingInstructionContentErrorMsg: "Please supply your instruction, some are empty.",
+          missingInstructionContentErrorMsg:
+            "Please supply your instruction, some are empty.",
           invalidWeightNumberErrorTitle: "Invalid weight number",
           invalidWeightNumberErrorMsg: "You cannot have a negative weights.",
-
         },
         shareRecipeSuccess: {
           title: "Success",
@@ -129,6 +139,13 @@ i18n
           sortNew: "Récent",
           sortOld: "Ancien",
           sortOrder: "Ordre de tri",
+          prepTime: "Temps de préparation",
+          cookTime: "Temps de cuisson",
+          servings: "Portions",
+          instructions: "Instructions",
+          ingredients: "Ingrédient",
+          leaveComment: "Laissez un commentaire",
+          submitBtn: "Soumettre",
         },
         loginForm: {
           title: "Connexion",
@@ -181,25 +198,33 @@ i18n
           backBtn: "Retour",
           fileName: "Nom de fichier",
           missingRecipeNameErrorTitle: "Nom de recette manquant",
-          missingRecipeNameErrorMsg: "Veuillez fournir le nom de votre recette.",
+          missingRecipeNameErrorMsg:
+            "Veuillez fournir le nom de votre recette.",
           missingRecipeSummaryErrorTitle: "Résumé de la recette manquant",
-          missingRecipeSummaryErrorMsg: "Veuillez fournir votre résumé de recette.",
-          invalidPrepTimeNumberErrorTitle: "Numéro d'heure de préparation invalide",
-          invalidPrepTimeNumberErrorMsg: "Vous ne pouvez pas avoir un temps de préparation négatif.",
+          missingRecipeSummaryErrorMsg:
+            "Veuillez fournir votre résumé de recette.",
+          invalidPrepTimeNumberErrorTitle:
+            "Numéro d'heure de préparation invalide",
+          invalidPrepTimeNumberErrorMsg:
+            "Vous ne pouvez pas avoir un temps de préparation négatif.",
           invalidCookTimeNumberErrorTitle: "Invalid cook time number",
           invalidCookTimeNumberErrorMsg: "Numéro de temps de cuisson invalide",
           invalidServingsNumberErrorTitle: "Nombre de portions invalides",
-          invalidServingsNumberErrorMsg: "Vous ne pouvez pas avoir de portions négatives.",
+          invalidServingsNumberErrorMsg:
+            "Vous ne pouvez pas avoir de portions négatives.",
           missingIngredientsErrorTitle: "Ingrédients manquants",
           missingIngredientsErrorMsg: "Veuillez fournir votre ingrédients.",
           missingIngredientNameErrorTitle: "Nom d'ingrédient manquant",
-          missingIngredientNameErrorMsg: "Veuillez fournir vos noms d'ingrédients, certains sont vides.",
+          missingIngredientNameErrorMsg:
+            "Veuillez fournir vos noms d'ingrédients, certains sont vides.",
           missingInstructionsErrorTitle: "Instructions manquantes",
           missingInstructionsErrorMsg: "Veuillez fournir vos instructions.",
           missingInstructionContentErrorTitle: "Contenu d'instruction manquant",
-          missingInstructionContentErrorMsg: "Veuillez fournir vos instructions, certaines sont vides.",
+          missingInstructionContentErrorMsg:
+            "Veuillez fournir vos instructions, certaines sont vides.",
           invalidWeightNumberErrorTitle: "Nombre de poids invalide",
-          invalidWeightNumberErrorMsg: "Vous ne pouvez pas avoir de poids négatives.",
+          invalidWeightNumberErrorMsg:
+            "Vous ne pouvez pas avoir de poids négatives.",
         },
         shareRecipeSuccess: {
           title: "Succès",

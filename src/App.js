@@ -41,7 +41,11 @@ function App() {
             <Route exact path="/login" element={<Login />}></Route>
           </Routes>
           <Routes>
-            <Route exact path="/viewRecipe" element={<ViewRecipe />}></Route>
+            <Route
+              exact
+              path="/viewRecipe/:id"
+              element={<ViewRecipe />}
+            ></Route>
           </Routes>
           <Routes>
             <Route
