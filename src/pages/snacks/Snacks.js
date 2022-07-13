@@ -5,42 +5,12 @@ import { Typography, Button, TextField } from "@mui/material";
 import { Text } from "../../components/typography/Typography";
 import * as React from "react";
 import MenuItem from "@mui/material/MenuItem";
-import fruit_snack_img from "../../img/snacks/fruit_snack.jpg";
-import granola_img from "../../img/snacks/granola.jpg";
-import pinwheel_pizza_img from "../../img/snacks/pinwheel_pizza.jpg";
+
 import { useTranslation } from "react-i18next";
+import { MOCK_DATA } from "../../mock_data/recipes";
 
-const DEFAULT_SNACKS = [
-  {
-    recipe_title: "Fruit Snack",
-    recipe_upload_date: new Date(2020, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: fruit_snack_img,
-  },
-  {
-    recipe_title: "Homemade Granola",
-    recipe_upload_date: new Date(2021, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: granola_img,
-  },
-  {
-    recipe_title: "Pinwheel Pizza",
-    recipe_upload_date: new Date(2022, 11, 17),
-    recipe_summary: "Recipe summary",
-    recipe_img: pinwheel_pizza_img,
-  },
-];
+const DEFAULT_SNACKS = MOCK_DATA.filter((d) => d.food_type === "Snack");
 
-const sortByOptions = [
-  {
-    value: "newest",
-    label: "Newest",
-  },
-  {
-    value: "oldest",
-    label: "Oldest",
-  },
-];
 export function Snacks() {
   const [sortOrder, setSortOrder] = React.useState("newest");
   const [snacks, setSnacks] = React.useState(DEFAULT_SNACKS);
@@ -111,6 +81,7 @@ export function Snacks() {
                   .join(" ")}
                 recipe_summary={value.recipe_summary}
                 recipe_img={value.recipe_img}
+                recipe_id={value.id}
               />
             );
           })}
