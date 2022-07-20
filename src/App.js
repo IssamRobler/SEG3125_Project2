@@ -13,6 +13,10 @@ import { CreateAccount } from "./pages/createaccount/CreateAccount";
 import styled from "styled-components";
 import { SucessShareRecipe } from "./pages/successsharerecipe/Sucess";
 import { Suspense } from "react";
+import { CostGenerator } from "./pages/costgenerator/CostGenerator";
+import { SucessAccountCreated } from "./pages/sucessaccountcreated/SucessAccountCreated";
+import { SucessForgotPassword } from "./pages/sucessforgotpassword/SucessForgotPassword";
+import { ForgotPassword } from "./pages/forgotPassword/ForgotPassword";
 function App() {
   return (
     <Suspense fallback={null}>
@@ -33,6 +37,13 @@ function App() {
           </Routes>
           <Routes>
             <Route exact path="/snacks" element={<Snacks />}></Route>
+          </Routes>
+          <Routes>
+            <Route
+              exact
+              path="/costgenerator"
+              element={<CostGenerator />}
+            ></Route>
           </Routes>
           <Routes>
             <Route exact path="/sharerecipe" element={<ShareRecipe />}></Route>
@@ -59,6 +70,27 @@ function App() {
               exact
               path="/sucessShareRecipe"
               element={<SucessShareRecipe />}
+            ></Route>
+          </Routes>
+          <Routes>
+            <Route
+              exact
+              path="/sucessAccountCreated"
+              element={<SucessAccountCreated />}
+            ></Route>
+          </Routes>
+          <Routes>
+            <Route
+              exact
+              path="/sucessForgotPassword"
+              element={<SucessForgotPassword />}
+            ></Route>
+          </Routes>
+          <Routes>
+            <Route
+              exact
+              path="/forgotPassword"
+              element={<ForgotPassword />}
             ></Route>
           </Routes>
         </Content>

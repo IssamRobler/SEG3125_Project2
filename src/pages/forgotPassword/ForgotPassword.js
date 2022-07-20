@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { PageTitle, Text } from "../../components/typography/Typography";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
-import { useState } from "react";
 
 const paperStyle = {
   width: "50vh",
@@ -14,30 +14,23 @@ const paperStyle = {
   background: "linear-gradient(#66CCCC, #FFCC33)",
   margin: "5% auto",
 };
-export function Login() {
-  const { t } = useTranslation(["loginForm"]);
+export function ForgotPassword() {
+  const { t } = useTranslation(["forgotPassword"]);
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState({ title: "", msg: "" });
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const handleLoginClicked = () => {
+  const handleForgotPassword = () => {
     if (!email || email === "") {
       setIsError(true);
       setError({
         title: t("missingEmailErrorTitle"),
         msg: t("missingEmailErrorMsg"),
       });
-    } else if (!password || password === "") {
-      setIsError(true);
-      setError({
-        title: t("missingPasswordErrorTitle"),
-        msg: t("missingPasswordErrorMsg"),
-      });
     } else {
       setIsError(false);
       setError({ title: "", msg: "" });
-      navigate("/");
+      navigate("/sucessForgotPassword");
     }
   };
 
@@ -45,14 +38,13 @@ export function Login() {
     setEmail(e.target.value);
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
   return (
     <Paper elevation={3} style={paperStyle}>
       <Form>
-        <Typography variant="h5" style={{ textAlign: "center" }}>
+        <Typography
+          variant="h5"
+          style={{ textAlign: "center", margin: "5vh 0" }}
+        >
           <Text>{t("title")}</Text>
         </Typography>
         <UserInputs>
@@ -67,79 +59,46 @@ export function Login() {
               onChange={handleEmailChange}
             />
           </div>
-          <div>
-            <TextField
-              required
-              label={t("password")}
-              style={{ background: "white" }}
-              type="password"
-              fullWidth
-              variant="filled"
-              onChange={handlePasswordChange}
-            />
-          </div>
         </UserInputs>
-        <RememberMeContainer>
-          <Checkbox>
-            <input id="rememberMe" type="checkbox" />
-            <label htmlFor="rememberMe">
-              <Text>{t("rememberMe")}</Text>
-            </label>
-          </Checkbox>
-
-          <Link to="/forgotPassword">
-            <Text>{t("forgotPassword")}</Text>
-          </Link>
-        </RememberMeContainer>
         <Button
           variant="container"
           style={{ backgroundColor: "#CC9933", padding: "15px" }}
-          onClick={handleLoginClicked}
+          onClick={handleForgotPassword}
         >
           <Typography variant="subtitle2">
-            <Text>{t("loginBtn")}</Text>
+            <Text>{t("btn")}</Text>
           </Typography>
         </Button>
-        <Link to="/createAccount" style={{ textAlign: "center" }}>
-          <Text>{t("createAccount")}</Text>
-        </Link>
         {!isError || (
-          <Alert severity="error">
-            <AlertTitle>{error.title}</AlertTitle>
-            {error.msg}
-          </Alert>
+          <Error>
+            <Alert severity="error">
+              <AlertTitle>{error.title}</AlertTitle>
+              {error.msg}
+            </Alert>
+          </Error>
         )}
       </Form>
     </Paper>
   );
 }
+
 const Error = styled.div`
   margin: 3vh 0;
 `;
-const Checkbox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 38%;
-`;
-const RememberMeContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 0px;
-`;
 const UserInputs = styled.div`
-  height: 30%;
+  height: 25vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 5vh;
 `;
 const Form = styled.form`
   display: flex;
   flex-direction: column;
 
   justify-content: space-around;
-  height: 50vh;
+  min-height: 50vh;
   padding: 10%;
   width: 75%;
 

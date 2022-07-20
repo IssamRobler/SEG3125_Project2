@@ -15,6 +15,10 @@ const weightUnit = [
     value: "kilogram",
     label: "kg",
   },
+  {
+    value: "n/a",
+    label: "n/a",
+  },
 ];
 
 export function Ingredients({

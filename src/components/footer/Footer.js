@@ -30,6 +30,11 @@ export function Footer() {
             <Text>{t("snack")}</Text>
           </Typography>
         </Link>
+        <Link to="/costgenerator">
+          <Typography variant="subtitle1">
+            <Text>{t("costGenerator")}</Text>
+          </Typography>
+        </Link>
       </Links>
       <Typography variant="subtitle1">
         <Text>Copyright</Text>

@@ -50,6 +50,11 @@ export function Nav() {
             <Text>{t("snack")}</Text>
           </Typography>
         </Link>
+        <Link to="/costgenerator">
+          <Typography variant="subtitle1">
+            <Text>{t("costGenerator")}</Text>
+          </Typography>
+        </Link>
       </Links>
       <Usercontent>
         <Link to="/sharerecipe">
@@ -106,7 +111,7 @@ const Links = styled.div`
   flex-direction: row;
   padding: 10px;
   background-color: #339999;
-  width: 25%;
+  width: 35%;
   justify-content: space-between;
 `;
 const Title = styled.div`
