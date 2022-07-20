@@ -1,7 +1,7 @@
 import { Paper, TextField, Typography, Button } from "@mui/material";
 import { width } from "@mui/system";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PageTitle, Text } from "../../components/typography/Typography";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
@@ -21,7 +21,7 @@ export function CreateAccount() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [retypePassword, setRetypePassword] = useState("");
-
+  const navigate = useNavigate();
   const handleCreateAccountClicked = () => {
     console.log(email, password, retypePassword);
     if (!email || email === "") {
@@ -51,6 +51,7 @@ export function CreateAccount() {
     } else {
       setIsError(false);
       setError({ title: "", msg: "" });
+      navigate("/sucessAccountCreated");
     }
   };
 
